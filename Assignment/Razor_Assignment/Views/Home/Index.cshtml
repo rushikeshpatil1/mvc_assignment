@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+ 
+    
+        @{
+
+            int[] notes = new int[] { 1000, 500, 100, 10, 1 };
+            int[] noteCounter = new int[5];
+
+
+            for (int i = 0; i < 5; i++)
+            {
+                if (ViewBag.amount >= notes[i])
+                {
+                    noteCounter[i] = ViewBag.amount / notes[i];
+                    ViewBag.amount = ViewBag.amount - noteCounter[i] * notes[i];
+                }
+            }
+
+            
+        }
+
+        <div class="row">
+            <div class="col-lg-6 mx-auto">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>notes</th>
+                            <th>Count</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                     
+                        @for (int i = 0; i < noteCounter.Length; i++)
+                        {
+                            <tr>
+                                <td>@notes[i]</td>
+                                <td>@noteCounter[i]</td>
+                                <td>@(notes[i] * noteCounter[i])</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

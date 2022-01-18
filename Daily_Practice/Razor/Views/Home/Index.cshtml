@@ -1,0 +1,55 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+
+        <table>
+            <tr>
+                <td>id</td>
+                <td>name</td>
+                <td>marks</td>
+
+            </tr>
+            <tr>
+                <td>@ViewBag.no</td>
+                <td>@ViewBag.name</td>
+                <td>@ViewBag.marks</td>
+
+            </tr>
+
+            <tr>
+                @if (ViewBag.marks > 50)
+                {
+                    <td>passed!</td>
+                }
+                <td>
+                    @for (int i = 0; i < ViewBag.Subjects; i++)
+                    {
+                        <span>@i</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @foreach (var i in ViewBag.Remarks)
+                    {
+                        <span>@i</span>
+                    }
+                <td>
+            </tr>
+
+
+        </table>
+    </div>
+</body>
+</html>
