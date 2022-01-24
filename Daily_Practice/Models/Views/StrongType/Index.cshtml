@@ -1,0 +1,30 @@
+﻿@model  List<Models.Models.model2>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Index</h2>
+
+<h3>Strongly Typed View Example</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th> ID</th>
+            <th> Name</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td><a href="/products/details/@item.id">@item.name </a></td>
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
