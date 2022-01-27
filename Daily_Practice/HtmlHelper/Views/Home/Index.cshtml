@@ -1,0 +1,43 @@
+﻿@model List<HtmlHelpersEx.Models.model1>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        @Html.Label("firstName", "First Name")
+
+        <h3>Text Box -</h3>
+        @Html.TextBox("txtFirstName", "", new { @class = "form-control", placeholder = "First Name" })
+        <h3>Text Area -</h3>
+        @Html.TextArea("address", new { @class = "form-control", rows = "5" })
+
+        <h3>password -</h3>
+        @Html.Password("password", " ", new { @class = "form-control" })
+
+        <h3>Radio Button -</h3>
+        @Html.RadioButton("gender", "Male", new { id = "IsMale" }) Male
+
+        <h3>Check Box -</h3>
+        @Html.CheckBox("checkbox") checkbox
+
+        <ul>
+            @foreach (var i in Model)
+
+            {
+                <li>@i.id</li>
+                <li>@i.name</li>
+            }
+        </ul>
+       
+    </div>
+</body>
+</html>
