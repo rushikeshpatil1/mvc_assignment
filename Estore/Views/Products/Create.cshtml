@@ -1,0 +1,119 @@
+﻿@model Estore.Models.products
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Add New Product</h2>
+
+    @using (Html.BeginForm("create", "products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <!--<label for="ProductName">Product Name</label>
+                <input type="text" class="form-control" id="ProductName" name="ProductName" placeholder="Product Name">-->
+                @* @Html.ValidationMessageFor(t => t.ProductName)*@
+
+                @Html.LabelFor(temp => temp.ProductName)
+                @Html.TextBoxFor(temp => temp.ProductName, new { placeholder = "Enter Product Name", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.ProductName)
+
+
+            </div>
+    
+            <div class="form-group col-md-6">
+                @*     <label for="Price">Price</label>
+        <input type="text" class="form-control" id="Price" name="Price" placeholder="Price">
+        @Html.ValidationMessageFor(t => t.Price)*@
+
+                @Html.LabelFor(temp => temp.Price)
+                @Html.TextBoxFor(temp => temp.Price, new { placeholder = "Enter Price", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.Price)
+
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+
+                @*                <label for="DateOfPurchase">Date of Purchase</label>
+        <input type="date" class="form-control" id="DateOfPurchase" name="DateOfPurchase" placeholder="Date of Purchase">
+        @Html.ValidationMessageFor(t => t.DateOfPurchase)*@
+
+                @Html.LabelFor(temp => temp.DateOfPurchase  )
+                @Html.TextBoxFor(temp => temp.DateOfPurchase, new {placeholder = "Date of Purchase", @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.DateOfPurchase)
+      
+            </div>
+
+            <div class="form-group col-md-6">
+
+                @*     <label for="AvailabilityStatus">Availability Status</label>
+        <select class="form-control" id="AvailabilityStatus" name="AvailabilityStatus">
+            <option value="">Please Select</option>
+            <option value="InStock">In Stock</option>
+            <option value="OutOfStock">Out of Stock</option>
+        </select>
+        @Html.ValidationMessageFor(t => t.AvailabilityStatus)*@
+
+                @Html.LabelFor(temp => temp.AvailabilityStatus, new { @class = "form-check-label" })
+                <div class="form-check">
+                    @Html.RadioButtonFor(temp => temp.AvailabilityStatus, "InStock", new { @class = "form-check-input", id = "InStock" })
+                    <label class="form-check-label" for="InStock">In Stock</label>
+                </div>
+                <div class="form-check">
+                    @Html.RadioButtonFor(temp => temp.AvailabilityStatus, "OutOfStock", new { @class = "form-check-input", id = "OutOfStock" })
+                    <label class="form-check-label" for="OutOfStock">Out of Stock</label>
+                </div>
+                @Html.ValidationMessageFor(temp => temp.AvailabilityStatus)
+
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                @* <label for="VendorID">Sold By</label>
+        <select class="form-control" id="VendorID" name="VendorID">
+            <option value="">Please Select</option>
+            @foreach (var ven in ViewBag.Vendors)
+            {
+                <option value="@ven.VendorID">@ven.VendorName</option>
+            }
+        </select>*@
+
+
+
+                @Html.LabelFor(temp => temp.VendorID)
+                @Html.DropDownListFor(temp => temp.VendorID, new SelectList(ViewBag.vendors, "VendorID", "VendorName"), "Please Select Vendor", new { @class = "form-control" })
+                @Html.ValidationMessageFor(temp => temp.VendorID)
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="Image">Image</label>
+            <input type="file" class="form-control-file" id="Image" name="Photo" />
+            @Html.ValidationMessageFor(temp => temp.Photo)
+
+
+
+        </div>
+
+
+        <button type="submit" class="btn btn-success">Create</button>
+        <a class="btn btn-danger" href="/products/index">Cancel</a>
+    }
+
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#DateOfPurchase").datepicker({
+            dateFormat: "dd-mm-yy",
+            changemonth: true,
+            changeyear: true
+        });
+    });
+</script>

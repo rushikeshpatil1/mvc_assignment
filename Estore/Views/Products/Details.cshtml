@@ -1,0 +1,136 @@
+﻿@model Estore.Models.products
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+<style>
+
+    body {
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 0.200rem 0.25rem rgb(0 0 0 / 8%) !important;
+    }
+
+
+
+    .profile-card {
+        border-radius: 20px;
+    @*    width: 600px;*@
+        height:450px;
+        background-color: white;
+        display: flex;
+        flex: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        margin-bottom: 70px;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+        .profile-card header {
+          @*  border-right: 1px solid #d32f2f;*@
+            width: 400px;
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+           @* border-radius: 50%;*@
+            display: flex;
+            margin: auto;
+            margin-top: 40px;
+            border: 8px solid transparent;
+            transition: .4s;
+        }
+
+
+
+        .profile-card h1 {
+            font-family:inherit;
+           @* color: #e57373;*@
+            text-align: center;
+        }
+
+        .profile-card h2,h3 {
+            font-family: inherit;
+            font-size: 20px;
+            text-align: center;
+        }
+
+    .backlink {
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+
+
+
+
+
+
+
+    
+
+
+</style>
+
+
+@*<h2>Product Details</h2>
+    <table class="table">
+        <tr>
+            <th>Product ID</th>
+            <td>@Model.ProductID</td>
+        </tr>
+        <tr>
+            <th>Product Name</th>
+            <td>@Model.ProductName</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>@Model.Price.Value.ToString("C")</td>
+        </tr>
+        <tr>
+            <th>Date of Purchase</th>
+            <td>@Model.DateOfPurchase.Value.ToString("d/M/yyyy")</td>
+        </tr>
+        <tr>
+            <th>Brand</th>
+            <td>@Model.vendors.VendorName</td>
+        </tr>
+
+    </table>*@
+
+
+
+
+
+<div class="profile-card">
+    <header>
+        <!-- Profile -->
+        <img src="data:image;base64,@Model.Photo" />
+        @* <h1>@Model.ProductID</h1>*@
+        <h1>@Model.vendors.VendorName</h1>
+        <h2>@Model.ProductName.</h2>
+        <h2>@Model.Price.Value.ToString("C")</h2>
+
+        <h2>Date : @Model.DateOfPurchase.Value.ToString("d/M/yyyy")</h2>
+        <h2> @Model.AvailabilityStatus !</h2>
+        <a class="backlink" href="/products/index">Back to Products</a>
+    </header>
+ 
+   @* <div class="profile-bio">
+        <p> A just-starting-out frontender in a big world of code.</p>
+
+
+        <a href="/products/index">Back to Products</a>
+    </div>*@
+
+</div>

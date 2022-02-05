@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Style/style.css" rel="stylesheet" />
+    @*    <script src="~/Style/JavaScript.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+                integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>*@
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/home/index">
+                    <i class="fa fa-shopping-cart"></i> <span class="ml-3 font-weight-bold"> E!Store </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto pl-lg-4">
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Home</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/vendors/index"><span class="d-inline-block d-lg-none icon-width"></span>Vendors</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/products/index"><span class="d-inline-block d-lg-none icon-width"></span>Products</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
+
+                    </ul>
+
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto pl-lg-4">
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Register</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log In</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log Out</a> </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+
+
+    <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom">
+        <div class="container text-center">
+            <small>Copyright &copy; E! Store </small>
+        </div>
+    </footer>
+</body>
+</html>
