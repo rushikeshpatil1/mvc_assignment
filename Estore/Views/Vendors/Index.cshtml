@@ -1,0 +1,242 @@
+﻿@model List<Estore.Models.vendors>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+
+
+
+
+<h2>Vendors</h2>
+<a href="/vendors/create">Create</a>
+<table class="table">
+    <tr>
+        <th>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/vendors/index?SortColumn=VendorID&IconClass=fa-sort-asc&PageNo=1">ID</a>
+                if (ViewBag.SortColumn == "VendorID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/vendors/index?SortColumn=VendorID&IconClass=fa-sort-desc&PageNo=1">ID</a>
+                if (ViewBag.SortColumn == "VendorID")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th> Photo</th>
+        <th>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/vendors/index?SortColumn=VendorName&IconClass=fa-sort-asc&PageNo=1">Name</a>
+                if (ViewBag.SortColumn == "VendorName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/vendors/index?SortColumn=VendorName&IconClass=fa-sort-desc&PageNo=1">Name</a>
+                if (ViewBag.SortColumn == "VendorName")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/vendors/index?SortColumn=Email&IconClass=fa-sort-asc&PageNo=1">Email</a>
+                if (ViewBag.SortColumn == "Email")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/vendors/index?SortColumn=Email&IconClass=fa-sort-desc&PageNo=1">Email</a>
+                if (ViewBag.SortColumn == "Email")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+
+        <th>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/vendors/index?SortColumn=Contact&IconClass=fa-sort-asc&PageNo=1">Contact</a>
+                if (ViewBag.SortColumn == "Contact")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/vendors/index?SortColumn=Contact&IconClass=fa-sort-desc&PageNo=1">Contact</a>
+                if (ViewBag.SortColumn == "Contact")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th>
+            @if (ViewBag.IconClass == "fa-sort-desc")
+            {
+                <a href="/vendors/index?SortColumn=Address&IconClass=fa-sort-asc&PageNo=1">Address</a>
+                if (ViewBag.SortColumn == "Address")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+            else
+            {
+                <a href="/vendors/index?SortColumn=Address&IconClass=fa-sort-desc&PageNo=1">Address</a>
+                if (ViewBag.SortColumn == "Address")
+                {
+                    <i class="fa @ViewBag.IconClass"></i>
+                }
+            }
+        </th>
+        <th> Menu</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr id="row_@item.VendorID">
+
+            <td>@item.VendorID</td>
+            <td><img class="vendorImg" src="data:image;base64,@item.Photo" /></td>
+         
+            <td>@item.VendorName</td>
+            <td>@item.Email</td>
+            <td>@item.Contact</td>
+            <td>@item.Address</td>
+            <td>
+                <a href="/vendors/details/@item.VendorID">Details</a> |
+                <a href="/vendors/edit/@item.VendorID">Edit</a> |
+                <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.VendorID)">Delete</a>
+
+
+            </td>
+
+        </tr>
+
+
+    }
+    <tr>
+        <td colspan="9">
+            @{
+                int PrevPageNo = ViewBag.PageNo - 1;
+                if (PrevPageNo <= 0)
+                {
+                    PrevPageNo = 1;
+                }
+
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                }
+            }
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="/vendors/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@PrevPageNo">Prev</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if ((i + 1) == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="/vendors/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i + 1)">@( i + 1)</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/vendors/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@(i + 1)">@( i + 1)</a>
+                        </li>
+                    }
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/vendors/index?SortColumn=@ViewBag.SortColumn&IconClass=@ViewBag.IconClass&PageNo=@NextPageNo">Next</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+
+
+
+</table>
+
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Delete Vendor</h3>
+               @* <a href="#" class="close" data-dismiss="modal">&times;</a>*@
+
+            </div>
+            <div class="modal-body">
+                <h4>Are you sure ? You want to delete this</h4>
+
+                <div style="text-align:center;display:none" id="loaderDiv">
+                    @*<img src="~/Content/InternetSlowdown_Day.gif" width="150" />*@
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-default" onclick="cancel()" data-dismiss="modal">Cancel</a>
+                <a href="#" class="btn btn-success" onclick="Delete()">Confirm</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<input type="hidden" id="hiddenVendorID" />
+
+<script>
+
+    var ConfirmDelete = function (VendorID) {
+
+        $("#hiddenVendorID").val(VendorID);
+        $("#myModal").modal('show');
+
+    }
+
+    var Delete = function () {
+
+        $("#loaderDiv").show();
+
+        var VendorID = $("#hiddenVendorID").val();
+
+        $.ajax({
+
+            type: "POST",
+            url: "/Vendors/Delete/",
+            data: {id: VendorID },
+            success: function (result) {
+                $("#loaderDiv").hide();
+                $("#myModal").modal("hide");
+                $("#row_" + VendorID).remove();
+
+            }
+
+        })
+
+    }
+
+    var cancel = function () {
+        $("#myModal").modal("hide");
+    }
+</script>

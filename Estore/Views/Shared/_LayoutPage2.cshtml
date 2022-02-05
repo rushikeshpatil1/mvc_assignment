@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Style/style.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <title>@ViewBag.Title</title>
+
+    <style>
+
+
+.wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  background: #7386D5;
+  color: #fff;
+  transition: all 0.3s;
+  height: 100vh;
+}
+
+#sidebar a,
+#sidebar a:hover,
+#sidebar a:focus {
+  color: inherit;
+}
+
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #6d7fcc;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  color: #7386D5;
+  background: #fff;
+}
+
+#sidebar ul li.active > a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+a[aria-expanded="false"]::before,
+a[aria-expanded="true"]::before {
+  content: '\e259';
+  display: block;
+  position: absolute;
+  right: 20px;
+  font-family: 'Glyphicons Halflings';
+  font-size: 0.6em;
+}
+
+a[aria-expanded="true"]::before {
+  content: '\e260';
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
+}
+
+ul.CTAs {
+  padding: 20px;
+}
+
+ul.CTAs a {
+  text-align: center;
+  font-size: 0.9em !important;
+  display: block;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+a.download {
+  background: #fff;
+  color: #7386D5;
+}
+
+a.article,
+a.article:hover {
+  background: #6d7fcc !important;
+  color: #fff !important;
+}
+
+
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@*media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #sidebarCollapse span {
+    display: none;
+  }
+}*@
+
+
+        .trans {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light shadow-sm bg-light">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="/home/index">
+                    <i class="fa fa-shopping-cart"></i> <span class="ml-3 font-weight-bold"> E!Store </span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto pl-lg-4">
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Home</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/vendors/index"><span class="d-inline-block d-lg-none icon-width"></span>Vendors</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/products/index"><span class="d-inline-block d-lg-none icon-width"></span>Products</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
+
+                    </ul>
+
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto pl-lg-4">
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Register</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log In</a> </li>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log Out</a> </li>
+
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+
+    </div>
+
+
+
+
+
+    <div class="wrapper">
+        <!-- Sidebar Holder -->
+        <nav id="sidebar">
+
+            <div class="sidebar-header">
+                <h3>Search</h3>
+
+            </div>
+
+            <form action="/products/index">
+                <div class="form-group">
+            
+                    <ul class="list-group" >
+                        <li class="list-group-item trans"><input type="text" name="proName" placeholder="Enter Product Name" class="form-control" value="@ViewBag.proName" /></li>
+                        <li class="list-group-item trans" ><input type="text" name="proPrice" placeholder="Enter Price" class="form-control" value="@ViewBag.proPrice" /></li>
+                        <li class="list-group-item trans" ><input type="text" name="proVen" placeholder="Enter Shop" class="form-control" value="@ViewBag.proVen" /></li>
+                        <li class="list-group-item trans" ><button type="submit" class="btn-info navbar-btn" style="margin-left:60px">Search</button></li>
+                    </ul>
+                </div>
+            </form>
+        </nav>
+
+       
+        
+            <div class="container-fluid">
+
+                @RenderBody()
+             
+            </div>
+       
+
+    </div>
+
+
+    <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50 fixed-bottom">
+        <div class="container text-center">
+            <small>Copyright &copy; E! Store </small>
+        </div>
+    </footer>
+
+    <script>
+
+        
+
+
+   
+        $(document).ready(function () {
+@*            $("#sidebar").hide();*@
+            $("#sidebarCollapse").on("click", function () {
+                $("#sidebar").show();
+                $("#sidebar").toggleClass("active");
+                $(this).toggleClass("active");
+            });
+        });
+
+
+    </script>
+</body>
+</html>
+

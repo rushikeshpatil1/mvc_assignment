@@ -1,0 +1,133 @@
+﻿@model Estore.Models.vendors
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+
+    body {
+        --bs-bg-opacity: 1;
+        background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
+    }
+
+    .shadow-sm {
+        box-shadow: 0 0.200rem 0.25rem rgb(0 0 0 / 8%) !important;
+    }
+
+
+
+    .profile-card {
+        border-radius: 20px;
+    @*    width: 600px;*@
+        height:450px;
+        background-color: white;
+        display: flex;
+        flex: 1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%);
+        margin-bottom: 70px;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+        .profile-card header {
+          @*  border-right: 1px solid #d32f2f;*@
+            width: 400px;
+        }
+
+        .profile-card img {
+            width: 150px;
+            height: 150px;
+           @* border-radius: 50%;*@
+            display: flex;
+            margin: auto;
+            margin-top: 40px;
+            border: 8px solid transparent;
+            transition: .4s;
+        }
+
+
+
+        .profile-card h1 {
+            font-family:inherit;
+           @* color: #e57373;*@
+            text-align: center;
+        }
+
+        .profile-card h2,h3 {
+            font-family: inherit;
+            font-size: 20px;
+            text-align: center;
+        }
+
+    .backlink {
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+
+</style>
+
+
+@*<h2>Vendor  Details</h2>
+<h3>@Model.VendorName </h3>
+*@
+
+@*<table class="table">
+    <tr>
+        <th>Vendor ID</th>
+        <td>@Model.VendorID</td>
+    </tr>
+    <tr>
+        <th>Vendor Name</th>
+        <td>@Model.VendorName</td>
+    </tr>
+    <tr>
+        <th>Address</th>
+        <td>@Model.Address</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Model.Email</td>
+    </tr>
+    <tr>
+        <th>Contact</th>
+        <td>@Model.Contact</td>
+    </tr>
+    <tr>
+        <th>Photo</th>
+        <td><img src="data:image;base64,@Model.Photo"/></td>
+    </tr>
+
+</table>
+
+<a href="/vendors/index">Back to Vendors</a>*@
+
+
+
+<div class="profile-card">
+    <header>
+        <!-- Profile -->
+        <img src="data:image;base64,@Model.Photo" />
+        @* <h1>@Model.ProductID</h1>*@
+   
+        <h2>@Model.VendorName.</h2>
+        <h2>@Model.Address</h2>
+
+        <h2>Email : @Model.Email</h2>
+        <h2> Contact : @Model.Contact</h2>
+        <a class="backlink" href="/vendors/index">Back to Products</a>
+    </header>
+
+    @* <div class="profile-bio">
+            <p> A just-starting-out frontender in a big world of code.</p>
+
+
+            <a href="/products/index">Back to Products</a>
+        </div>*@
+
+</div>
