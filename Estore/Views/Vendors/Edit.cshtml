@@ -7,7 +7,7 @@
 
 
 
-<h2>Update @Model.VendorName</h2>
+<h2 style="text-align:center">Update @Model.VendorName</h2>
 @using (Html.BeginForm("edit", "vendors", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-row">
@@ -60,12 +60,18 @@
             <label for="Image">Image</label>
 
             <input type="file" class="form-control-file" id="Photo" name="Photo" value="@Model.Photo" />
+            <img  style="width:120px;" src="data:image;base64,@Model.Photo" />
         </div>
     </div>
-    <button type="submit" class="btn btn-success">Save</button>
-    <a class="btn btn-danger" href="/vendors/index">Cancel</a>
+
+    <div class="form-row1">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a class="btn btn-danger" href="/vendors/index">Cancel</a>
+    </div>
+
+   
 }
 
 
-    @*<img src="data:image;base64,@Model.Photo" />*@
+    
 

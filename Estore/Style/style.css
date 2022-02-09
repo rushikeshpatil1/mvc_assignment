@@ -56,11 +56,27 @@ body {
 }
 
 
+form {
+    height: 450px;
+
+border-bottom:2px solid black;
+}
+    .form-row,.form-group1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align:left;
+}
 
 
 
-
-
-
+.form-row1 {
+    display: flex;
+    justify-content:space-evenly;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    margin-top:10px;
+}
 
 

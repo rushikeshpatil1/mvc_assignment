@@ -5,15 +5,62 @@
     Layout = "~/Views/Shared/_LayoutPage2.cshtml";
 }
 
-<h2>Products</h2>
-<a href="/products/create">
-    Add New Product
-</a>
-<br>
-<button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
-    <i class="glyphicon glyphicon-align-left"></i>
-    <span>Search</span>
-</button>
+
+
+<style>
+
+    .head {
+        text-align: center;
+    }
+
+    table {
+        text-align: center;
+        border: 1px solid black;
+        border-bottom: 2px solid #00cccc;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.10), 0px 10px 20px rgba(0,0,0,0.05), 0px 20px 20px rgba(0,0,0,0.05), 0px 30px 20px rgba(0,0,0,0.05);
+        margin-top:2%;
+    }
+
+    th, td {
+        @*color: #999;*@
+        border: 1px solid #eee;
+        padding: 12px 35px;
+        border-collapse: collapse;
+    }
+
+    th {
+        background: #00cccc;
+        @*color: #fff;*@
+        text-transform: uppercase;
+        font-size: 12px;
+   
+
+  
+    }
+
+    th > a {
+        color: black;
+        text-decoration: none;
+    }
+</style>
+
+
+<div class="head">
+    <h2>Products</h2>
+
+</div>
+
+<div class="sub">
+    <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn" style="background-color: #0d6efd; color:#fff">
+        <i class="glyphicon glyphicon-align-left"></i>
+        <span>Search</span>
+    </button>
+    <a class="btn btn-success" href="/products/create"> Add </a>
+
+
+</div>
+
+
 <table class="table">
     <tr>
         <th>
@@ -140,8 +187,8 @@
             <td>@item.AvailabilityStatus</td>
             <td>@item.vendors.VendorName</td>
             <td>
-                <a href="/Products/Details/@item.ProductID">Details</a> |
-                <a href="/Products/Edit/@item.ProductID">Edit</a> |
+                <a class="btn btn-info" href="/Products/Details/@item.ProductID">Details</a> |
+                <a class="btn btn-success" href="/Products/Edit/@item.ProductID">Edit</a> |
                 <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.ProductID)">Delete</a>
 
             </td>
@@ -196,16 +243,17 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title">Delete Vendor</h3>
+                <h3 class="modal-title">Delete Product</h3>
                 @* <a href="#" class="close" data-dismiss="modal">&times;</a>*@
 
             </div>
             <div class="modal-body">
-                <h4>Are you sure ? You want to delete this</h4>
-
-                <div style="text-align:center;display:none" id="loaderDiv">
-                    @*<img src="~/Content/InternetSlowdown_Day.gif" width="150" />*@
+                <div style="text-align:center" id="loaderDiv">
+                    <img style="width:150px;" src="https://img.icons8.com/color/48/000000/box-important--v4.gif" />
                 </div>
+                <h4>Are you sure ? You want to delete ?</h4>
+
+
 
             </div>
             <div class="modal-footer">
