@@ -201,6 +201,7 @@ namespace Estore.Controllers
             products existingProduct = db.products.Where(temp => temp.ProductID == id).FirstOrDefault();
             ViewBag.products = db.products.ToList();
             ViewBag.vendors = db.vendors.ToList();
+            TempData["photo"] = existingProduct.Photo;
             return View(existingProduct);
         }
 
@@ -216,17 +217,31 @@ namespace Estore.Controllers
             existingProduct.VendorID = p.VendorID;
             
             existingProduct.AvailabilityStatus = p.AvailabilityStatus;
-   
+
+
+            if (p.Photo != null)
+            {
+
+                var file = Request.Files[0];
+                var imgBytes = new Byte[file.ContentLength];
+                file.InputStream.Read(imgBytes, 0, file.ContentLength);
+                var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
+                p.Photo = base64String;
+
+            }
+            else
+            {
+                string pic = Convert.ToString(TempData["photo"]);
+                p.Photo = pic;
+            }
+
+            existingProduct.Photo = p.Photo;
+
             db.SaveChanges();
             return RedirectToAction("index", "products");
         }
 
-       /* public JsonResult Delete(long id)
-        {
-            products existingProduct = db.products.Where(temp => temp.ProductID == id).FirstOrDefault();
-            return View(existingProduct);
-        }
-*/
+
 
         public JsonResult Delete(long id)
         {

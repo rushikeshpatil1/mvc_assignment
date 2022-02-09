@@ -1,0 +1,109 @@
+﻿;
+
+
+
+
+.text-center {
+    text-align: center;
+}
+
+
+
+
+
+
+.exploreContent {
+    display: flex;
+    margin: 5% 2%;
+}
+
+.exploreHeading {
+    text-align: center;
+    padding-top: 20px;
+    font-weight: 900;
+}
+
+
+
+
+
+.exploreArea .neumorphic {
+    background: #e0e5ec;
+    border-radius: 1.2rem;
+    cursor: default;
+    max-width: 100%;
+}
+
+    .exploreArea .neumorphic.ridge {
+        box-shadow: inset 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), inset -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+    }
+
+.exploreArea .card {
+     display: flex; 
+     width: 100%; 
+    margin: 15px;
+    /* justify-content: space-between; */
+}
+
+.exploreArea .category {
+    margin-bottom: 1.35em;
+    padding: 0.8em 0.8em 0.5em;
+    /* justify-content: space-between; */
+}
+
+    .exploreArea .category img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        /* transform: scale(1);
+        -webkit-transform: scale(1); */
+        transition: .3s ease-in-out;
+        -webkit-transition: .3s ease-in-out;
+        border: 1px solid #e0e5ec;
+        height: 300px;
+    }
+
+        .exploreArea .category img:hover {
+            filter: blur(1.5px);
+            filter: opacity(85%);
+            transform: scale(1.15);
+            -webkit-transform: scale(1.15);
+        }
+
+.exploreArea .categoryImage {
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1em;
+    position: relative;
+}
+
+.exploreArea .category h3 {
+    display: block;
+    text-align: center;
+}
+
+.exploreBtn {
+    display: block;
+    text-align: center;
+}
+
+    .exploreBtn a {
+        text-decoration: none;
+        display: block;
+        padding: 10px 0;
+        box-shadow: 0.2rem 0.2rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.5rem #fff, 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), -0.2rem -0.2rem 0.4rem #fff;
+    }
+
+
+
+        .exploreBtn a:active {
+            box-shadow: inset 0.3rem 0.3rem 0.5rem rgba(195, 193, 198, 0.9), inset -0.2rem -0.2rem 0.4rem #f0f2f5;
+        }
+
+
+@media (max-width: 768px) {
+    .exploreContent {
+        display: block;
+    }
+}
+

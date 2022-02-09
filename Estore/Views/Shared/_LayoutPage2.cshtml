@@ -15,24 +15,26 @@
 
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link  rel="stylesheet" href="~/Style/tables.css"/>
     <title>@ViewBag.Title</title>
 
     <style>
-
+   
 
 .wrapper {
   display: flex;
   align-items: stretch;
 }
 
-#sidebar {
-  min-width: 250px;
-  max-width: 250px;
-  background: #7386D5;
-  color: #fff;
-  transition: all 0.3s;
-  height: 100vh;
-}
+        #sidebar {
+            text-align: center;
+            min-width: 250px;
+            max-width: 250px;
+            background: #0d6efd;
+            color: #fff;
+            transition: all 0.3s;
+            height: 100vh;
+        }
 
 #sidebar a,
 #sidebar a:hover,
@@ -44,10 +46,10 @@
   margin-left: -250px;
 }
 
-#sidebar .sidebar-header {
-  padding: 20px;
-  background: #6d7fcc;
-}
+            #sidebar .sidebar-header {
+                padding: 50px;
+                background: #0d6efd;
+            }
 
 #sidebar ul.components {
   padding: 20px 0;
@@ -171,7 +173,7 @@ a.article:hover {
                     </ul>
 
                 </div>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        @*        <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto pl-lg-4">
                         <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Register</a> </li>
                         <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log In</a> </li>
@@ -179,7 +181,7 @@ a.article:hover {
 
                     </ul>
 
-                </div>
+                </div>*@
             </div>
         </nav>
 
@@ -205,7 +207,7 @@ a.article:hover {
                         <li class="list-group-item trans"><input type="text" name="proName" placeholder="Enter Product Name" class="form-control" value="@ViewBag.proName" /></li>
                         <li class="list-group-item trans" ><input type="text" name="proPrice" placeholder="Enter Price" class="form-control" value="@ViewBag.proPrice" /></li>
                         <li class="list-group-item trans" ><input type="text" name="proVen" placeholder="Enter Shop" class="form-control" value="@ViewBag.proVen" /></li>
-                        <li class="list-group-item trans" ><button type="submit" class="btn-info navbar-btn" style="margin-left:60px">Search</button></li>
+                        <li class="list-group-item trans" ><button type="submit" class="btn-dark navbar-btn" >Search</button></li>
                     </ul>
                 </div>
             </form>

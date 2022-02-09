@@ -73,6 +73,7 @@ D:\mvc_assignment\Estore\bin\System.Web.Webpages.Razor.xml
 D:\mvc_assignment\Estore\bin\System.Web.Helpers.xml
 D:\mvc_assignment\Estore\bin\System.Web.Mvc.xml
 D:\mvc_assignment\Estore\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\mvc_assignment\Estore\obj\Debug\Estore.csproj.AssemblyReference.cache
 D:\mvc_assignment\Estore\obj\Debug\Estore.Migrations.InitialCreate.resources
 D:\mvc_assignment\Estore\obj\Debug\Estore.Migrations.one.resources
 D:\mvc_assignment\Estore\obj\Debug\Estore.Migrations.two.resources
@@ -85,4 +86,3 @@ D:\mvc_assignment\Estore\obj\Debug\Estore.csproj.CoreCompileInputs.cache
 D:\mvc_assignment\Estore\obj\Debug\Estore.csproj.CopyComplete
 D:\mvc_assignment\Estore\obj\Debug\Estore.dll
 D:\mvc_assignment\Estore\obj\Debug\Estore.pdb
-D:\mvc_assignment\Estore\obj\Debug\Estore.csproj.AssemblyReference.cache

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Edit Product</h2>
+<h2 style="text-align:center">Edit Product</h2>
 @using (Html.BeginForm("edit", "products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
@@ -69,43 +69,40 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            @*     <label for="VendorID">Sold By</label>
-                <select class="form-control" id="VendorID" name="VendorID">
-                    <option value="">Please Select</option>
-                    @foreach (var van in ViewBag.Vendors)
-                    {
-                        if (van.VendorID == Model.VendorID)
-                        {
-                            <option value="@van.VendorID" selected="selected">@van.VendorName</option>
-                        }
-                        else
-                        {
-                            <option value="@van.VendorID">@van.VendorName</option>
-                        }
-                    }
-                </select>*@
 
 
 
             @Html.LabelFor(temp => temp.VendorID)
             @Html.DropDownListFor(temp => temp.VendorID, new SelectList(ViewBag.vendors, "VendorID", "VendorName"), "Please Select Vendor", new { @class = "form-control" })
-            
+
             @Html.ValidationMessageFor(temp => temp.VendorID)
         </div>
 
     </div>
 
 
-    <button type="submit" class="btn btn-success">Save</button>
-    <a class="btn btn-danger" href="/products/index">Cancel</a>
+    <div class="form-row">
+        <div class="form-group">
+            <label for="Image">Image</label>
+
+            <input type="file" class="form-control-file" id="Photo" name="Photo" value="@Model.Photo" />
+            <img style="width:120px;" src="data:image;base64,@Model.Photo" />
+        </div>
+    </div>
+
+
+    <div class="form-row1">
+        <button type="submit" class="btn btn-success">Save</button>
+        <a class="btn btn-danger" href="/products/index">Cancel</a>
+    </div>
 }
 
-    <script>
-        $(document).ready(function () {
-            $("#DateOfPurchase").datepicker({
-                dateFormat: "dd-mm-yy",
-                changemonth: true,
-                changeyear: true
-            });
+<script>
+    $(document).ready(function () {
+        $("#DateOfPurchase").datepicker({
+            dateFormat: "dd-mm-yy",
+            changemonth: true,
+            changeyear: true
         });
-    </script>
+    });
+</script>

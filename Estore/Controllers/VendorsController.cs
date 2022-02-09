@@ -104,55 +104,53 @@ namespace Estore.Controllers
 
         public ActionResult Edit(long id)
         {
-            vendors existingProduct = db.vendors.Where(temp => temp.VendorID == id).FirstOrDefault();
-            return View(existingProduct);
+            vendors existingvendor = db.vendors.Where(temp => temp.VendorID == id).FirstOrDefault();
+            TempData["photo"] = existingvendor.Photo;
+
+            return View(existingvendor);
+       
         }
 
         [HttpPost]
         public ActionResult Edit(vendors ven)
         {
 
+            vendors existingvendor = db.vendors.Where(temp => temp.VendorID == ven.VendorID).FirstOrDefault();
+            existingvendor.VendorName = ven.VendorName;
+            existingvendor.Address = ven.Address;
+            existingvendor.Contact = ven.Contact;
+            existingvendor.Email = ven.Email;
 
 
-          
-           
+            if (ven.Photo != null)
+            {
 
-            vendors existingProduct = db.vendors.Where(temp => temp.VendorID == ven.VendorID).FirstOrDefault();
-            existingProduct.VendorName = ven.VendorName;
-            existingProduct.Address = ven.Address;
-            existingProduct.Contact = ven.Contact;
-            existingProduct.Email = ven.Email;
+                var file = Request.Files[0];
+                var imgBytes = new Byte[file.ContentLength];
+                file.InputStream.Read(imgBytes, 0, file.ContentLength);
+                var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
+                ven.Photo = base64String;
+
+            }
+            else
+            {
+                string pic = Convert.ToString(TempData["photo"]);
+                ven.Photo = pic;
+            }
 
 
 
-            var file = Request.Files[0];
-            var imgBytes = new Byte[file.ContentLength];
-            file.InputStream.Read(imgBytes, 0, file.ContentLength);
-            var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
-            ven.Photo = base64String;
 
 
-            existingProduct.Photo = ven.Photo;
+
+
+            existingvendor.Photo = ven.Photo;
 
             db.SaveChanges();
             return RedirectToAction("index", "vendors");
         }
 
-        /*  public ActionResult Delete(long id)
-          {
-              vendors existingProduct = db.vendors.Where(temp => temp.VendorID == id).FirstOrDefault();
-              return View(existingProduct);
-          }*/
 
-        /*   [Route("vendors/delete/{id}")]
-
-           public ActionResult Delete(long id)
-           {
-               vendors existingProduct = db.vendors.Where(temp => temp.VendorID == id).FirstOrDefault();
-               db.vendors.Remove(existingProduct);
-               db.SaveChanges();
-               return RedirectToAction("index", "vendors");
-           }*/
         public JsonResult Delete(long id)
         {
             bool result = false;

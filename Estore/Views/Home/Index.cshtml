@@ -4,23 +4,51 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<section class="hero">
-    <div class="a">
-        <div class="heroContent">
-            <div class="row">
-                <div class="heroCont col-sm-6">
-                    <h1>E!Store </h1>
-                    <p class="contentPara">
-                        If you would like to experience the best of Electronic Products for men, women and kids in India, you are at the right place.</p>
-                    <a href="/home/login" class="btn btn-primary">Shop Now !</a>
+<link rel="stylesheet" href="~/Style/home.css" />
+
+
+
+
+<style>
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+         background-color: none;
+         background-clip: border-box;
+         border: none ;
+        border-radius: 0;
+            }
+</style>
+<section class="explore">
+    <div class="exploreArea">
+        <div class="exploreContent">
+            <div class="card">
+                <div class="category  neumorphic ridge">
+                    <div class="categoryImage">
+                        <img src="~/images/watch.jpg">
+                    </div>
+                    <h3>Smart Watch</h3>
                 </div>
-
-                <div class="col-sm-6 imgDiv">
-                    <img class="heroImg" src="~/images/hero2.jpg" />
-
+            </div>
+            <div class="card">
+                <div class="category  neumorphic ridge">
+                    <div class="categoryImage">
+                        <img src="~/images/mobile.jpg">
+                    </div>
+                    <h3>Mobile</h3>
+                </div>
+            </div>
+            <div class="card">
+                <div class="category  neumorphic ridge">
+                    <div class="categoryImage">
+                        <img src="~/images/headphone.jpg">
+                    </div>
+                    <h3>Headphones</h3>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
