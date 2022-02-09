@@ -173,15 +173,30 @@ a.article:hover {
                     </ul>
 
                 </div>
-        @*        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                @if (User.Identity.IsAuthenticated == true)
+                {
+                    <div >
+                        <a class="nav-link" href="/account/myprofile">@User.Identity.Name</a>
+                       
+                    </div>
+                }
+
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto pl-lg-4">
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Register</a> </li>
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log In</a> </li>
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Log Out</a> </li>
+                        @if (User.Identity.IsAuthenticated == false)
+                        {
+                            <li class="nav-item"><a class="nav-link" href="/account/register">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/account/login">Login</a></li>
+                        }
+                        @if (User.Identity.IsAuthenticated == true)
+                        {
+                            <li class="nav-item"><a class="nav-link" href="/account/logout">Logout</a></li>
+                        }
 
                     </ul>
 
-                </div>*@
+                </div>
             </div>
         </nav>
 
