@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Estore.Filters;
 using Estore.Models;
 
 namespace Estore.Controllers
 {
+    [MyAuthenticationFilter]
+   
+
     public class ProductsController : Controller
     {
         EstoreContext db = new EstoreContext();
@@ -254,20 +258,6 @@ namespace Estore.Controllers
         }
 
 
-        /*
-                [HttpPost]
-                public ActionResult Delete(long id, products p)
-                {
-                    products existingProduct = db.products.Where(temp => temp.ProductID == id).FirstOrDefault();
-                    db.products.Remove(existingProduct);
-                    db.SaveChanges();
-                    return RedirectToAction("index", "product");
-                }*/
     }
-
-
-
-
-
 
 }

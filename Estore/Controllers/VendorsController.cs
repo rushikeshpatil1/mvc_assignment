@@ -7,13 +7,20 @@ using Estore.Models;
 using PagedList.Mvc;
 using PagedList;
 using System.IO;
+using Estore.Filters;
 
 namespace Estore.Controllers
 {
+
+    [MyAuthenticationFilter]
+  
+
     public class VendorsController : Controller
     {
         EstoreContext db = new EstoreContext();
         // GET: Vendors
+
+        
         public ActionResult Index(string SortColumn = "VendorName", string IconClass = "fa-sort-asc", int PageNo = 1)
         {
             List<vendors> vendors = db.vendors.ToList();
@@ -149,6 +156,7 @@ namespace Estore.Controllers
             db.SaveChanges();
             return RedirectToAction("index", "vendors");
         }
+
 
 
         public JsonResult Delete(long id)
