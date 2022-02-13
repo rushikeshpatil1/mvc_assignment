@@ -128,21 +128,7 @@ a.article:hover {
 
 
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
 
-@*media (max-width: 768px) {
-  #sidebar {
-    margin-left: -250px;
-  }
-  #sidebar.active {
-    margin-left: 0;
-  }
-  #sidebarCollapse span {
-    display: none;
-  }
-}*@
 
 
         .trans {
@@ -165,12 +151,16 @@ a.article:hover {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto pl-lg-4">
                         <li class="nav-item px-lg-2"> <a class="nav-link" href="/home/index"> <span class="d-inline-block d-lg-none icon-width"></span>Home</a> </li>
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/vendors/index"><span class="d-inline-block d-lg-none icon-width"></span>Vendors</a> </li>
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="/products/index"><span class="d-inline-block d-lg-none icon-width"></span>Products</a> </li>
-                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
 
-                    </ul>
+                        <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>About</a> </li>
+                        @if (@User.Identity.Name == "admin" || @User.Identity.Name == "manager")
+                        {
+                            <li class="nav-item px-lg-2"> <a class="nav-link" href="/vendors/index"><span class="d-inline-block d-lg-none icon-width"></span>Vendors</a> </li>
+                        }
+                            <li class="nav-item px-lg-2"> <a class="nav-link" href="/products/index"><span class="d-inline-block d-lg-none icon-width"></span>Products</a> </li>
+                            <li class="nav-item px-lg-2"> <a class="nav-link" href="#"><span class="d-inline-block d-lg-none icon-width"></span>Contact</a> </li>
+
+                        </ul>
 
                 </div>
                 @if (User.Identity.IsAuthenticated == true)

@@ -55,8 +55,14 @@
         <i class="glyphicon glyphicon-align-left"></i>
         <span>Search</span>
     </button>
-    <a class="btn btn-success" href="/products/create"> Add </a>
-
+    @if (User.Identity.Name == "admin")
+    {
+        <a class="btn btn-success" href="/products/create"> Add </a>
+    }
+    else if (User.Identity.Name == "manager")
+    {
+        <a class="btn btn-success" href="/products/create"> Add </a>
+    }
 
 </div>
 
@@ -177,22 +183,37 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr id="row_@item.ProductID">
+<tr id="row_@item.ProductID">
 
-            <td>@item.ProductID</td>
-            <td><img class="proImg" src="data:image;base64,@item.Photo" /></td>
-            <td>@item.ProductName</td>
-            <td>@item.Price.Value.ToString("C")</td>
-            <td>@item.DateOfPurchase.Value.ToString("d/M/yyyy")</td>
-            <td>@item.AvailabilityStatus</td>
-            <td>@item.vendors.VendorName</td>
-            <td>
-                <a class="btn btn-info" href="/Products/Details/@item.ProductID">Details</a> |
-                <a class="btn btn-success" href="/Products/Edit/@item.ProductID">Edit</a> |
-                <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.ProductID)">Delete</a>
+    <td>@item.ProductID</td>
+    <td><img class="proImg" src="data:image;base64,@item.Photo" /></td>
+    <td>@item.ProductName</td>
+    <td>@item.Price.Value.ToString("C")</td>
+    <td>@item.DateOfPurchase.Value.ToString("d/M/yyyy")</td>
+    <td>@item.AvailabilityStatus</td>
+    <td>@item.vendors.VendorName</td>
 
-            </td>
-        </tr>
+    @if (User.Identity.Name != "admin")
+    {
+        <td>
+            <a class="btn btn-info" href="/Products/Details/@item.ProductID">Details</a>
+        </td>
+    }
+  
+
+    @if (User.Identity.Name == "admin" )
+    {
+        <td>
+            <a class="btn btn-info" href="/Products/Details/@item.ProductID">Details</a> |
+
+
+
+            <a class="btn btn-success" href="/Products/Edit/@item.ProductID">Edit</a> |
+            <a class="btn btn-danger" href="#" onclick="ConfirmDelete(@item.ProductID)">Delete</a>
+
+        </td>
+    }
+</tr>
 
 
     }

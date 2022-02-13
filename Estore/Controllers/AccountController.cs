@@ -32,16 +32,23 @@ namespace Estore.Controllers
                 var passwordHash = Crypto.HashPassword(rvm.Password);
                 var user = new ApplicationUser() { Email = rvm.email, UserName = rvm.Username, PasswordHash = passwordHash, Address = rvm.Address, PhoneNumber = rvm.Mobile };
                 IdentityResult result = userManager.Create(user);
-
-                if (result.Succeeded)
+                try
                 {
-                    //role
-                    userManager.AddToRole(user.Id, "Customer");
+                    if (result.Succeeded)
+                    {
+                        //role
+                        userManager.AddToRole(user.Id, "Customer");
 
-                    //login
-                    var authenticationManager = HttpContext.GetOwinContext().Authentication;
-                    var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
-                    authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
+                        //login
+                        var authenticationManager = HttpContext.GetOwinContext().Authentication;
+                        var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
+                        authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
+                    }
+                }
+                catch (Exception ex)
+                {
+                   
+                    return RedirectToAction("login","account");
                 }
                 return RedirectToAction("index", "home");
             }
