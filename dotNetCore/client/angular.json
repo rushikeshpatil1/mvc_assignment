@@ -27,6 +27,8 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -73,7 +75,11 @@
             "development": {
               "browserTarget": "client:build:development"
             }
-          },
+          }, "options": {
+            "sslKey": "./ssl/server.key",
+            "sslCert": "./ssl/server.crt",
+            "ssl": true
+        },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
