@@ -1,0 +1,13 @@
+[type="radio"]::before {
+    margin-left: -19px;
+    content: "";
+    position: revert;
+    left: 0;
+    top: -0.1em;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #333;
+    border-radius: 50% 45% 40% 50% / 40% 50% 50% 45%;
+}
+
