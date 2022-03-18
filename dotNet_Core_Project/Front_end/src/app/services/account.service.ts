@@ -6,8 +6,7 @@ import {map} from 'rxjs/operators';
 import { User } from '../models/user';
 import { ReplaySubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
-// import { environment } from 'src/environments/environment';
-// import { PresenceService } from './presence.service';
+import { PresenceService } from './presence.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class AccountService {
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private presence: PresenceService) { }
 
   login(model: any) {
     return this.http.post(this.baseUrl + 'account/login', model).pipe(
@@ -25,7 +24,7 @@ export class AccountService {
         const user = response;
         if (user) {
           this.setCurrentUser(user);
-          // this.presence.createHubConnection(user);
+          this.presence.createHubConnection(user);
         }
       })
     )
@@ -36,16 +35,16 @@ export class AccountService {
       map((user: any) => {
         if (user) {
          this.setCurrentUser(user);
-        //  this.presence.createHubConnection(user);
+         this.presence.createHubConnection(user);
         }
       })
     )
   }
 
   setCurrentUser(user: User) {
-    // user.roles = [];
-    // const roles = this.getDecodedToken(user.token).role;
-    // Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
+    user.roles = [];
+    const roles = this.getDecodedToken(user.token).role;
+    Array.isArray(roles) ? user.roles = roles : user.roles.push(roles);
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
@@ -57,10 +56,10 @@ export class AccountService {
   logout() {
     localStorage.removeItem('user');
     this.currentUserSource.next(null!);
-    // this.presence.stopHubConnection();
+    this.presence.stopHubConnection();
   }
 
-  // getDecodedToken(token) {
-  //   return JSON.parse(atob(token.split('.')[1]));
-  // }
+  getDecodedToken(token) {
+    return JSON.parse(atob(token.split('.')[1]));
+  }
 }

@@ -29,6 +29,12 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TextInputComponent } from './forms/text-input/text-input.component';
 import { DateInputComponent } from './forms/date-input/date-input.component';
+import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
+import { PhotoManagementComponent } from './admin/photo-management/photo-management.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { HasRoleDirective } from './directives/has-role.directive';
+import { RolesModalsComponent } from './modals/roles-modals/roles-modals.component';
+import { ConfirmDialogComponent } from './modals/confirm/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -52,6 +58,12 @@ import { DateInputComponent } from './forms/date-input/date-input.component';
     PhotoEditorComponent,
     TextInputComponent,
     DateInputComponent,
+    AdminPanelComponent,
+    PhotoManagementComponent,
+    UserManagementComponent,
+    HasRoleDirective,
+    RolesModalsComponent,
+    ConfirmDialogComponent,
 
   ],
   imports: [FileUploadModule,

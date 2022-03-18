@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json;
-using API.helpers;
+using API.Helpers;
+using API.Interfaces;
 using Microsoft.AspNetCore.Http;
 
 namespace API.Extensions
