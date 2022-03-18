@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
 using API.Extensions;
-using API.interfaces;
+
+using API.Interfaces;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace API.helpers
+namespace API.Helpers
 {
     public class LogUserActivity : IAsyncActionFilter
     {
@@ -16,10 +17,10 @@ namespace API.helpers
             if (!resultContext.HttpContext.User.Identity.IsAuthenticated) return;
 
             var userId = resultContext.HttpContext.User.GetUserId();
-            var uow = resultContext.HttpContext.RequestServices.GetService<IUserRepository>();
-            var user = await uow.GetUserByIdAsync(userId);
+            var uow = resultContext.HttpContext.RequestServices.GetService<IUnitOfWork>();
+            var user = await uow.UserRepository.GetUserByIdAsync(userId);
             user.LastActive = DateTime.UtcNow;
-            await uow.SaveAllAsync();
+            await uow.Complete();
         }
     }
 }

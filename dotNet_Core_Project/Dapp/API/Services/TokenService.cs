@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Entities;
-using API.interfaces;
+using API.Helpers;
+using API.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -11,19 +12,21 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+
 namespace API.Services
 {
     public class TokenService : ITokenService
     {
         private readonly SymmetricSecurityKey _key;
-  /*      private readonly UserManager<AppUser> _userManager;*/
-        public TokenService(IConfiguration config)
+        private readonly UserManager<AppUser> _userManager;
+        public TokenService(IConfiguration config, UserManager<AppUser> userManager)
         {
-         /*   _userManager = userManager;*/
+            _userManager = userManager;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
 
-        public Task<string> CreateToken(AppUser user)
+        public async Task<string> CreateToken(AppUser user)
         {
             var claims = new List<Claim>
             {
@@ -32,9 +35,9 @@ namespace API.Services
             };
 
 
-            /*  var roles = await _userManager.GetRolesAsync(user);*/
+            var roles = await _userManager.GetRolesAsync(user);
 
-            /*claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));*/
+            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
             var creds =  new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
 
@@ -52,7 +55,7 @@ namespace API.Services
 
             var token =  tokenHandler.CreateToken(tokenDescriptor);
 
-            return Task.FromResult(tokenHandler.WriteToken(token));
+            return tokenHandler.WriteToken(token);
         }
     }
 }

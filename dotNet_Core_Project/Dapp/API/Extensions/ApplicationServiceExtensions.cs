@@ -1,8 +1,9 @@
 ﻿using System;
 using API.Data;
-using API.helpers;
-using API.interfaces;
+using API.Helpers;
+using API.Interfaces;
 using API.Services;
+using API.SignalR;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -19,8 +20,10 @@ namespace API.Extensions
             });
             services.AddScoped<IPhotoService, PhotoService>();
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddSingleton<PresenceTracker>();
+
             services.AddScoped<LogUserActivity>();
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddAutoMapper(typeof(AutoMapperProfiles).Assembly);
 

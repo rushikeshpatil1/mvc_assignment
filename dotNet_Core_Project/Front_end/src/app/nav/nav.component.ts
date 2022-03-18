@@ -27,6 +27,8 @@ export class NavComponent implements OnInit {
     this.logg=true;}, 
   
       )
+ 
+
 
   }
 

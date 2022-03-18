@@ -6,7 +6,7 @@ using API.Extensions;
 using AutoMapper;
 
 
-namespace API.helpers
+namespace API.Helpers
 {
     public class AutoMapperProfiles:Profile
     {
@@ -21,6 +21,14 @@ namespace API.helpers
                CreateMap<Photo, PhotoDto>();
             CreateMap<MemberUpdateDto, AppUser>();
             CreateMap<RegisterDto, AppUser>();
+            CreateMap<Message, MessageDto>()
+               .ForMember(dest => dest.SenderPhotoUrl, opt => opt.MapFrom(src =>
+                   src.Sender.Photos.FirstOrDefault(x => x.IsMain).Url))
+               .ForMember(dest => dest.RecipientPhotoUrl, opt => opt.MapFrom(src =>
+                   src.Recipient.Photos.FirstOrDefault(x => x.IsMain).Url));
+            CreateMap<MessageDto, Message>();
+            CreateMap<MessageDto, MessageDto>();
+    
         }
     }
 }
